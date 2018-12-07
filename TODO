@@ -1,0 +1,10 @@
+ppt reveal.js
+1.react生命周期，react-router
+2.import {} 和不加{}的区别，
+3.react-media
+4.componentWillUnmount清除定时器很好理解，另外一个用法this._mounted
+5.canvas操作需要涉及到dom，必须放在willmount
+6.https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html  三个生命周期废除 react异步渲染http://www.karmagut.me/?p=288
+7.willmount 和 didmount区别 https://segmentfault.com/q/1010000008133309，和redux的dispatch发送action时机做一下比较
+8.setState https://zhuanlan.zhihu.com/p/39512941
+9.阮一峰event loop http://www.ruanyifeng.com/blog/2014/10/event-loop.html
