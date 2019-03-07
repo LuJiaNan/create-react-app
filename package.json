@@ -3,9 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "antd": "^3.11.2",
+    "evergreen-ui": "^4.11.3",
+    "mc-large-select": "^1.0.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "react-scripts": "2.1.1"
+    "react-redux": "^6.0.0",
+    "react-script": "^2.0.5",
+    "react-scripts": "^2.1.4",
+    "react-spreadsheet-grid": "^1.4.3",
+    "react-windowed-select": "^0.0.3-alpha"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -21,5 +28,17 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "babel": {
+    "plugins": [
+      [
+        "import",
+        {
+          "libraryName": "antd",
+          "libraryDirectory": "es",
+          "style": true
+        }
+      ]
+    ]
+  }
 }
