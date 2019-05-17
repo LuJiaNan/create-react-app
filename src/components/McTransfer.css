@@ -1,7 +1,7 @@
 .mc-transfer{
     color: deepskyblue
 }
-.mc-transfer .ant-transfer-list-body {
+/* .mc-transfer .ant-transfer-list-body {
     margin-top:30px;
 }
 .mc-transfer .ant-transfer-list-footer{
@@ -16,21 +16,39 @@
     height: 30px;
     line-height: 30px;
     width: 100%;
-}
-.mc-transfer-header{
-    padding-left: 36px;
-    padding-right: 20px;
+    padding-left: 40px;
+    padding-right: 32px;
     display: inline-flex;
+    -webkit-box-pack:justify;
+    -webkit-justify-content:space-between;
+    -ms-flex-pack:justify;
+    justify-content:space-between;
+} */
+.mc-transfer .ant-transfer-list-content{
+    position: relative;
+    /*overflow-y: overlay; /* ---only in chrome and safari */
 }
-.mc-transfer-header div{
+.mc-transfer .ant-transfer-list-content-item>span{
+    display: inline-block;
+    position: absolute;
+    right: 15px;
+    left: 30px;
+}
+.mc-transfer .ant-transfer-list-content-item{
+    text-overflow:inherit;
+}
+.mc-transfer .ant-transfer-list-footer div{
     display: inline-block;
 }
 .mc-transfer .custom-item{
     display: inline-flex;
+    -webkit-box-pack:justify;
+    -webkit-justify-content:space-between;
+    -ms-flex-pack:justify;
+    justify-content:space-between;
     width: 100%;
-    padding-right: 20px;
 }
-.mc-transfer .custom-item>div , .mc-transfer-header div{
+.mc-transfer .custom-item>div{
     display: inline-block;
     text-align:center;
     white-space: nowrap;
@@ -38,21 +56,31 @@
     text-overflow: ellipsis;
     vertical-align: bottom;
 }
-.mc-transfer .mc-transfer-header div{
-    text-align:center;
-}
-.mc-transfer .custom-item .ant-select{
-    width:80%;
-}
-
 
 /* 穿梭框左侧 */
-.mc-transfer .ant-transfer-list:first-child{
-    /* padding-bottom:0; */
-}
-.mc-transfer .ant-transfer-list:first-child .ant-transfer-list-footer .mc-transfer-header div:not(:first-child){
+.mc-transfer .ant-transfer-list:first-child .ant-transfer-list-header .header-item div:not(:first-child){
     display:none;
 }
 .mc-transfer .ant-transfer-list:first-child .ant-transfer-list-content .custom-item div:not(:first-child){
     display:none;
+}
+.mc-transfer .ant-transfer-list:first-child .ant-transfer-list-content .custom-item div:first-child{
+    max-width: 100%!important;
+}
+
+
+
+/* 穿梭框头部样式 */
+.mc-transfer .ant-transfer-list-header-selected{
+    display: inline-block;
+    width: 90%;
+    padding: 0 20px;
+}
+.mc-transfer .header-item{
+    display: inline-flex;
+    -webkit-box-pack:justify;
+    -webkit-justify-content:space-between;
+    -ms-flex-pack:justify;
+    justify-content:space-between;
+    width: 100%;
 }

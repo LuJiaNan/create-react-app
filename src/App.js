@@ -10,110 +10,11 @@ import PropTypes from 'prop-types'
 import { Table , Transfer, Row, Col, Collapse ,Select } from 'antd'
 import { Button, IconButton, BackButton, SelectMenu, Pane, Text, Dialog, TextInput } from 'evergreen-ui'
 // import { Grid, Input, Select } from 'react-spreadsheet-grid'
-import McTransfer from './components/McTransfer'
+
 import WindowedSelect from "react-windowed-select"
+import MyTransfer from './myTransfer'
 
-const Option = Select.Option
-
-class App extends React.Component {
-  state = {
-    mockData: [],
-    targetKeys: [],
-    header:[{
-      // width: 180,
-      text: 'title',
-    },{
-      // width: 80,
-      text: 'description'
-    },{
-      // width: 65,
-      text: 'name'
-    }],
-    searchItem: 'title'
-  }
-
-  componentDidMount() {
-    this.getMock();
-  }
-
-  getMock = () => {
-    const targetKeys = [];
-    const mockData = [];
-    for (let i = 0; i < 20; i++) {
-      const data = {
-        key: i.toString(),
-        title: `content${i + 1}`,
-        description: `description of content${i + 1}`,
-        name: this.getName(`name${i + 1}`,i),
-        chosen: Math.random() * 2 > 1,
-      };
-      if (data.chosen) {
-        targetKeys.push(data.key);
-      }
-      mockData.push(data);
-    }
-    this.setState({ mockData, targetKeys });
-  }
-
-  getName = (name,id) => {
-    return (
-        <div onClick={this.stopPop}>
-          <Select onChange={this.changeName} defaultValue="1" size="small">
-            <Option value="1" key={id}>1</Option>
-            <Option value="2" key={id}>2</Option>
-            <Option value="3" key={id}>3</Option>
-            <Option value="4" key={id}>4</Option>
-          </Select>
-        </div>
-    )
-  }
-
-  changeName(value,selectRow){
-    console.log(selectRow.key)
-    console.log(value)
-  }
-
-  //阻止select冒泡
-  stopPop = (e) => {
-    if ( e && e.stopPropagation ){
-        e.stopPropagation(); 
-    } else if (window.event) {
-        window.event.cancelBubble = true; 
-    }
-  }
-
-  handleChange = (targetKeys, direction, moveKeys) => {
-    console.log(targetKeys, direction, moveKeys);
-    this.setState({ targetKeys });
-  }
-
-  handleSearch = (dir, value) => {
-    console.log('search:', dir, value);
-  };
-
-  render() {
-    return (
-      <React.Fragment>
-        <McTransfer
-          dataSource={this.state.mockData}
-          listStyle={{
-            width: 300,
-            height: 300,
-          }}
-          targetKeys={this.state.targetKeys}
-          onChange={this.handleChange}
-          header={this.state.header}
-          showSearch={true}
-          onSearch={this.handleSearch}
-          searchItem={this.state.searchItem}
-      />
-      </React.Fragment>
-    );
-  }
-}
-
-export default App
-
+export default MyTransfer
 
 
 
