@@ -11,10 +11,54 @@ import { Table , Transfer, Row, Col, Collapse ,Select } from 'antd'
 import { Button, IconButton, BackButton, SelectMenu, Pane, Text, Dialog, TextInput } from 'evergreen-ui'
 // import { Grid, Input, Select } from 'react-spreadsheet-grid'
 
-import WindowedSelect from "react-windowed-select"
-import MyTransfer from './myTransfer'
+import App from './myTransfer'
 
-export default MyTransfer
+
+//测试ts组件
+// import Hello from './Hello.tsx';
+// import ExtraModaltitle from './components/ExtraModaltitle/index.tsx'
+// class App extends React.Component{
+//     render(){
+//         return <ExtraModaltitle text="TypeScript" extra={10} />
+//     }
+// }
+
+// //测试
+// let arrs = new Array(10000000);
+
+// console.time('for');
+// for (let i = 0, len = arrs.length; i < len; i++) {
+
+// };
+// console.timeEnd('for');
+
+// console.time('forEach');
+	
+// arrs.forEach((arr) => {
+ 
+// });
+// console.timeEnd('forEach');
+
+// console.time('map');
+// arrs.map((v,i)=>{})
+// console.timeEnd('map');
+
+
+//结论(耗时)：
+// 1.十万级，foreach最少，for是map的两倍左右  
+// for: 2.507080078125ms
+// forEach: 0.442138671875ms
+// map: 1.004150390625ms
+// 1.百万级，for最少，forEach略多余for，map最多
+// for: 3.94091796875ms
+// forEach: 4.451904296875ms
+// map: 13.843017578125ms
+// 1.千万级，for最少，forEach是for的5倍以上，map最多
+// for: 8.449951171875ms
+// forEach: 43.73583984375ms
+// map: 151.18603515625ms
+
+export default App
 
 
 

@@ -1,31 +1,12 @@
 .mc-transfer{
     color: deepskyblue
 }
-/* .mc-transfer .ant-transfer-list-body {
+.mc-transfer .ant-transfer-list{
     margin-top:30px;
 }
-.mc-transfer .ant-transfer-list-footer{
-    border-radius: 4px 4px 0 0;
-    background: #fff;
-    color: rgba(0, 0, 0, 0.65);
-    border-bottom: 1px solid #e8e8e8;
-    overflow: hidden;
-    position: absolute;
-    top: 30px;
-    left: 0;
-    height: 30px;
-    line-height: 30px;
-    width: 100%;
-    padding-left: 40px;
-    padding-right: 32px;
-    display: inline-flex;
-    -webkit-box-pack:justify;
-    -webkit-justify-content:space-between;
-    -ms-flex-pack:justify;
-    justify-content:space-between;
-} */
 .mc-transfer .ant-transfer-list-content{
     position: relative;
+    overflow-x: hidden;
     /*overflow-y: overlay; /* ---only in chrome and safari */
 }
 .mc-transfer .ant-transfer-list-content-item>span{
@@ -83,4 +64,14 @@
     -ms-flex-pack:justify;
     justify-content:space-between;
     width: 100%;
+}
+
+/*穿梭狂title样式*/
+.mc-transfer .ant-transfer-list-header-title{
+    width: 100%;
+    right: 0;
+    top: -30px;
+    text-align:right;
+    height: 30px;
+    line-height: 30px;
 }

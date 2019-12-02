@@ -1,29 +1,37 @@
-import React, { Component } from 'react'
-import McTransfer from './components/McTransfer'
-import { Select, Button } from 'antd'
-import './App.css';
-const Option = Select.Option
+import React, { Component } from "react";
+import McTransfer from "./components/McTransfer";
+import { Select, Button } from "antd";
+import "./App.css";
+const Option = Select.Option;
 
 class App extends React.Component {
   state = {
     mockData: [],
     targetKeys: [],
-    header:[{
-      text: 'title',
-      width: 160
-    },{
-      text: 'description',
-      width: 80
-    },{
-      text: 'name',
-      width: 60
-    }],
-    searchItem: 'title',
-    // listStyle:{
-    //     width: 300,
-    //     height: 300,
-    // }
-  }
+    header: [
+      {
+        text: "title",
+        width: 160
+      },
+      {
+        text: "description",
+        width: 80
+      },
+      {
+        text: "name",
+        width: 150
+      }
+    ],
+    searchItem: "title",
+    listStyle: {
+      width: 500,
+      height: 400
+    },
+    leftStyle: {
+      width: 300,
+      height: 400
+    }
+  };
 
   componentDidMount() {
     this.getMock();
@@ -37,8 +45,8 @@ class App extends React.Component {
         key: i.toString(),
         title: `content${i + 1}`,
         description: `description of content${i + 1}`,
-        name: this.getName(`name${i + 1}`,i),
-        chosen: Math.random() * 2 > 1,
+        name: this.getName(`name${i + 1}`, i),
+        chosen: Math.random() * 2 > 1
       };
       if (data.chosen) {
         targetKeys.push(data.key);
@@ -46,54 +54,67 @@ class App extends React.Component {
       mockData.push(data);
     }
     this.setState({ mockData, targetKeys });
-  }
+  };
 
-  getName = (name,id) => {
+  getName = (name, id) => {
     // name 传入应是数组
     return (
-        <div onClick={this.stopPop}>
-          <Select onChange={this.changeName} defaultValue="1" size="small">
-            <Option value="1" key={id}>{name}</Option>
-            <Option value="2" key={id}>{name}</Option>
-            <Option value="3" key={id}>{name}</Option>
-            <Option value="4" key={id}>{name}</Option>
-          </Select>
-        </div>
-    )
-  }
+      <div onClick={this.stopPop}>
+        <Select
+          onChange={this.changeName}
+          defaultValue="1"
+          size="small"
+          style={{ width: "80px" }}
+        >
+          <Option value="1" key={id}>
+            {name}
+          </Option>
+          <Option value="2" key={id}>
+            {name}
+          </Option>
+          <Option value="3" key={id}>
+            {name}
+          </Option>
+          <Option value="4" key={id}>
+            {name}
+          </Option>
+        </Select>
+      </div>
+    );
+  };
 
-  changeName(value,selectRow){
-    console.log(selectRow.key)
-    console.log(value)
+  changeName(value, selectRow) {
+    console.log(selectRow.key);
+    console.log(value);
   }
 
   //阻止select冒泡
-  stopPop = (e) => {
-    if ( e && e.stopPropagation ){
-        e.stopPropagation(); 
+  stopPop = e => {
+    if (e && e.stopPropagation) {
+      e.stopPropagation();
     } else if (window.event) {
-        window.event.cancelBubble = true; 
+      window.event.cancelBubble = true;
     }
-  }
+  };
 
   handleChange = (targetKeys, direction, moveKeys) => {
     console.log(targetKeys, direction, moveKeys);
     this.setState({ targetKeys });
-  }
+  };
 
   handleSearch = (dir, value) => {
-    console.log('search:', dir, value);
+    console.log("search:", dir, value);
   };
 
   renderFooter = () => (
     <Button
       size="small"
-      style={{ float: 'right', margin: 5 }}
+      style={{ float: "right", margin: 5 }}
       onClick={this.getMock}
     >
-        reload
+      reload
     </Button>
-  )
+  );
 
   render() {
     return (
@@ -101,18 +122,30 @@ class App extends React.Component {
         <McTransfer
           dataSource={this.state.mockData}
           listStyle={this.state.listStyle}
+          leftStyle={this.state.leftStyle}
+          titleStyle={{
+            color: 'red',
+            // fontSize: '18px'
+          }}
+          leftTitleStyle={{
+            textAlign: 'left'
+          }}
+          rightTitleStyle={{
+            textAlign: 'center'
+          }}
+          // rightStyle={this.state.rightStyle}
           targetKeys={this.state.targetKeys}
           onChange={this.handleChange}
           header={this.state.header}
           titles={['Source', 'Target']}
-          showSearch={true}
+          // showSearch={true}
           onSearch={this.handleSearch}
           searchItem={this.state.searchItem}
           footer={this.renderFooter}
-      />
+        />
       </React.Fragment>
     );
   }
 }
 
-export default App
+export default App;
