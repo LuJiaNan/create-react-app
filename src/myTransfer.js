@@ -11,14 +11,17 @@ class App extends React.Component {
     header: [
       {
         text: "title",
+        columnName: '抬头',
         width: 160
       },
       {
         text: "description",
+        columnName: '描述',
         width: 80
       },
       {
         text: "name",
+        columnName: '名字',
         width: 150
       }
     ],

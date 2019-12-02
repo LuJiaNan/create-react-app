@@ -158,7 +158,7 @@ class NewTransferList extends Transfer.List {
 
     // header 重写
     var headerBody = this.props.header.map((value, i) => {
-      return <div key={`${value.text}${i}`}>{value.text}</div>;
+      return <div key={`${value.text}${i}`}>{value.columnName || value.text}</div>;
     });
 
     var titleStyle = this.props.type === 'left' ? leftTitleStyle : rightTitleStyle
