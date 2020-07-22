@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@uirouter/react": "^1.0.3",
     "antd": "^3.11.2",
     "evergreen-ui": "^4.11.3",
     "mc-large-select": "^1.0.2",
