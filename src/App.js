@@ -7,14 +7,47 @@ import ChildA from './childA'
 import ChildB from './childB'
 import PropTypes from 'prop-types'
 // import { Table, Card, Col, Row, Button, Form, Divider } from 'antd'
-import { Table , Transfer, Row, Col, Collapse ,Select } from 'antd'
+import { Table , Transfer, Row, Col, Collapse ,Select, Input, InputNumber, Form } from 'antd'
 import { Button, IconButton, BackButton, SelectMenu, Pane, Text, Dialog, TextInput } from 'evergreen-ui'
 // import { Grid, Input, Select } from 'react-spreadsheet-grid'
 
 import WindowedSelect from "react-windowed-select"
-import MyTransfer from './myTransfer'
 
-export default MyTransfer
+import MaskedInput from 'react-text-mask'
+
+class App extends React.Component {
+    render(){
+        const {getFieldProps,setFieldsValue} = this.props.form;
+        return (
+            <MaskedInput
+                mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
+                // guide={false}
+                // value={'111'}
+                // showMask
+                render={(ref, props) => {
+                    const { value } = getFieldProps('phone')
+                    return (
+                        <Input
+                            name={'phone'}
+                            value={value}
+                            ref={(input) => ref(input && input.input)}
+                            {...props}
+                            onChange={(event) => {
+                                props.onChange(event)
+                                setFieldsValue({
+                                    phone: event.target.value
+                                })
+                            }}
+                        />
+                    )}
+                }
+            />
+        )
+    }
+}
+
+const Comp = Form.create()(App)
+export default Comp;
 
 
 
