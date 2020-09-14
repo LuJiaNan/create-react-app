@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import TestSetState from './testSetState';
-import ClickTestSetState from './clickTestSetState'
-import ChildA from './childA'
-import ChildB from './childB'
 import PropTypes from 'prop-types'
 // import { Table, Card, Col, Row, Button, Form, Divider } from 'antd'
 import { Table , Transfer, Row, Col, Collapse ,Select, Input, InputNumber, Form } from 'antd'
@@ -15,33 +11,45 @@ import WindowedSelect from "react-windowed-select"
 
 import MaskedInput from 'react-text-mask'
 
+const FormItem = Form.Item;
+
+class NewMaskedInput extends MaskedInput {
+    render() {
+        const {render, ...props} = this.props
+        return render(this.setRef, {
+            onBlur: this.onBlur,
+            onChangeField: this.onChange,
+            defaultValue: this.props.value,
+            ...props,
+        })
+    }
+}
+
 class App extends React.Component {
     render(){
-        const {getFieldProps,setFieldsValue} = this.props.form;
+        const {getFieldDecorator,getFieldValue} = this.props.form;
+        console.log(getFieldValue('phone'))
         return (
-            <MaskedInput
-                mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
-                // guide={false}
-                // value={'111'}
-                // showMask
-                render={(ref, props) => {
-                    const { value } = getFieldProps('phone')
-                    return (
-                        <Input
-                            name={'phone'}
-                            value={value}
-                            ref={(input) => ref(input && input.input)}
-                            {...props}
-                            onChange={(event) => {
-                                props.onChange(event)
-                                setFieldsValue({
-                                    phone: event.target.value
-                                })
-                            }}
-                        />
-                    )}
-                }
-            />
+            <FormItem>
+                {getFieldDecorator('phone')(
+                    <NewMaskedInput
+                        mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
+                        render={(ref, props) => {
+                            const {defaultValue,onChange,onChangeField, ...others} = props;
+                            return (
+                                <Input
+                                    defaultValue={props.defaultValue}
+                                    ref={(input) => ref(input && input.input)}
+                                    onChange={(event) => {
+                                        props.onChangeField && props.onChangeField(event)
+                                    }}
+                                    {...others}
+                                />
+                            )}
+                        }
+                    />
+                )}
+            </FormItem>
         )
     }
 }
