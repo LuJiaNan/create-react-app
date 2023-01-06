@@ -12,7 +12,7 @@
     "react-dom": "^16.6.3",
     "react-redux": "^6.0.0",
     "react-script": "^2.0.5",
-    "react-scripts": "^2.1.4",
+    "react-scripts": "^5.0.1",
     "react-spreadsheet-grid": "^1.4.3",
     "react-text-mask": "^5.4.3",
     "react-windowed-select": "^0.0.3-alpha"
